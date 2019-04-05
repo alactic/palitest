@@ -16,10 +16,9 @@ Using computer with docked installed
 
   docker run -p 9600:3000 palitest
 
- # After the above instruction
- #Open your browser of your choice to test whether it's successful
- #by entering the url
+ # Open your browser of your choice to test whether it's successful
+ # by entering the url
 
-   http://localhost:9600 (if this do not work)
-   #use
+   http://localhost:9600
+ #(if "http://localhost:9600" do not work) use
    http://192.168.99.100:9600
