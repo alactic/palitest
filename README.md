@@ -24,13 +24,15 @@ Using computer with docked installed
 
    http://192.168.99.100:9600
 
- ## To do a POST request, Open your POSTMAN test environment
+ ## To do a POST request, Open your POSTMAN test environment and enter in the url text field
 
     http://localhost:9600/meal
 
  ## if "http://localhost:9600" do not work, use
 
     http://192.168.99.100:9600
+
+## Then
 
     select POST request
 
