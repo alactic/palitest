@@ -6,29 +6,29 @@ This project was generated with Nodejs and deploy-able using docker.
 
 Using computer with docked installed
 
- #open your command prompt
+ ##open your command prompt
 
  cd to this project
 
- #run this following
+ ##run this following
 
   docker build -t palitest .
 
   docker run -p 9600:3000 palitest
 
- # Open your browser of your choice to test whether deployment was successful by entering the following url
+ ## Open your browser of your choice to test whether deployment was successful by entering the following url
 
    http://localhost:9600
 
- #if "http://localhost:9600" do not work, use
+ ## if "http://localhost:9600" do not work, use
 
    http://192.168.99.100:9600
 
- #To do a POST request, Open your POSTMAN test environment
+ ## To do a POST request, Open your POSTMAN test environment
 
     http://localhost:9600/meal
 
- #if "http://localhost:9600" do not work, use
+ ## if "http://localhost:9600" do not work, use
 
     http://192.168.99.100:9600
 
@@ -36,7 +36,7 @@ Using computer with docked installed
 
     select JSON(application/json) as the return type
 
-  # in the body add (you can add any meal id)
+  ## in the body add (you can add any meal id)
 
   {
     "ids": [52966, 52965, 52964]
