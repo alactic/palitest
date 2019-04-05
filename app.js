@@ -20,7 +20,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/meal', mealRoutes);
 app.use('/', (req, res) => {
     res.send('Welcome to Pali Labs.  kindly make you request')
 });
