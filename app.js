@@ -20,8 +20,9 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use('/meal', mealRoutes);
 app.use('/', (req, res) => {
-    res.send('Welcome to Pali Labs.  kindly make you request')
+    res.send('Welcome to Pali Labs.  kindly make you request by sending array of ids as a POST request. eg ids:[52966, 52965, 52964]')
 });
 app.use(function(req, res, next) {
     const error = new Error('Not Found');
