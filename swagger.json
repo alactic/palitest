@@ -1,0 +1,18 @@
+/**
+ * @swagger
+ * /api/puppies/{id}:
+ *   put:
+ *     tags: Puppies
+ *     description: Updates a single puppy
+ *     produces: application/json
+ *     parameters:
+ *       name: puppy
+ *       in: body
+ *       description: Fields for the Puppy resource
+ *       schema:
+ *         type: array
+ *         $ref: '#/definitions/Puppy'
+ *     responses:
+ *       200:
+ *         description: Successfully updated
+ */
