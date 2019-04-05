@@ -6,11 +6,11 @@ This project was generated with Nodejs and deploy-able using docker.
 
 Using computer with docked installed
 
- ##open your command prompt
+ ## open your command prompt
 
  cd to this project
 
- ##run this following
+ ## run this following
 
   docker build -t palitest .
 
