@@ -23,10 +23,8 @@ exports.PostMeal = (req, res) => {
                             }
                         });
                         mealsWithIngredents.push({idMeal, ingredents});
-                        minIngredients = mealsWithIngredents.reduce((x, y) => {
-                            return (x['ingredents']['length'] > y['ingredents']['length'])? y : x
-                        });
-                    })
+                        minIngredients = mealsWithIngredents.reduce((x, y) => (x['ingredents']['length'] > y['ingredents']['length'])? y : x);
+                    });
                     res.status(200).json({id: minIngredients['idMeal']});
                 }
             }
