@@ -1,13 +1,12 @@
 const axios = require('axios')
-const mealList = [];
 exports.PostMeal = (req, res) => {
+    const mealList = [];
     req.body['ids'].forEach(async (id) => {
         try {
             const meal = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
             if (meal) {
                 mealList.push(meal['data'])
                 if(mealList.length === req.body['ids']['length'] ) {
-                    let minIngredients = [];
                     const mealsWithIngredents = [];
                     mealList.forEach(val => {
                         let ingredents = [];
@@ -23,8 +22,8 @@ exports.PostMeal = (req, res) => {
                             }
                         });
                         mealsWithIngredents.push({idMeal, ingredents});
-                        minIngredients = mealsWithIngredents.reduce((x, y) => (x['ingredents']['length'] > y['ingredents']['length'])? y : x);
                     });
+                    const minIngredients = mealsWithIngredents.reduce((x, y) => (x['ingredents']['length'] > y['ingredents']['length'])? y : x);
                     res.status(200).json({id: minIngredients['idMeal']});
                 }
             }
