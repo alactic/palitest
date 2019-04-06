@@ -1,16 +1,17 @@
 const axios = require('axios')
 const mealList = [];
-exports.PostMeal = function (req, res) {
+exports.PostMeal = (req, res) => {
     req.body['ids'].forEach(async (id) => {
         try {
             const meal = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
             if (meal) {
                 mealList.push(meal['data'])
-                if(mealList.length === 3 ) {
-                    let minidMeal = 0;
+                if(mealList.length === req.body['ids']['length'] ) {
+                    let minIngredients = [];
                     const mealsWithIngredents = [];
                     mealList.forEach(val => {
                         let ingredents = [];
+                        let idMeal = 0;
                         val['meals'].forEach(value => {
                             idMeal = value['idMeal'];
                             for(const name in value) {
@@ -21,18 +22,12 @@ exports.PostMeal = function (req, res) {
                                 }
                             }
                         });
-                        mealsWithIngredents.push({id: idMeal, ingredents:ingredents.length });
-                        let count = Number.POSITIVE_INFINITY;
-                        mealsWithIngredents.forEach(ingredent => {
-                            const ingredientCount = ingredent['ingredents'];
-                            if (ingredientCount < count) {
-                                count = ingredientCount;
-                                minidMeal = ingredent['id'];
-                            }
+                        mealsWithIngredents.push({idMeal, ingredents});
+                        minIngredients = mealsWithIngredents.reduce((x, y) => {
+                            return (x['ingredents']['length'] > y['ingredents']['length'])? y : x
                         });
-                        ingredents = [];
                     })
-                    res.status(200).json({id: minidMeal});
+                    res.status(200).json({id: minIngredients['idMeal']});
                 }
             }
         } catch (e) {
